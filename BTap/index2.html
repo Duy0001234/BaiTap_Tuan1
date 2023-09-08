@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+
+<body>
+    <script>
+        var markMass;
+        var markHeight;
+        var johnMass;
+        var johnHeight;
+        var markBMI;
+        var johnBMI;
+        markMass = prompt('What is Mark\'s Mass?');
+        markHeight = prompt('What is Mark\'s Height?');
+        johnMass = prompt('What is John\'s Mass?');
+        johnHeight = prompt('What is John\'s Height?');
+
+        markBMI = markMass / (markHeight * markHeight);
+        johnBMI = johnMass / (johnHeight * johnHeight);
+
+        var markBiggerBMI = markBMI > johnBMI;
+
+        console.log(markBMI, johnBMI);
+
+        if (markBMI > johnBMI) {
+            console.log('Mark\'s BMI is bigger than John\'s');
+        } else {
+            console.log('John\'s BMI is bigger than Mark\'s');
+        }
+
+
+        var teamJohnAvg = (89 + 102 + 103) / 3;
+        var teamMikeAvg = (116 + 94 + 123) / 3;
+        var teamMaryAvg = (97 + 134 + 105) / 3;
+        console.log('John\'s team Average: ' + teamJohnAvg + ' \n' +
+            'Mike\'s team Average: ' + teamMikeAvg + ' \n' +
+            'Mary\'s team Average: ' + teamMaryAvg
+        );
+
+        if (teamJohnAvg > teamMikeAvg && teamJohnAvg > teamMaryAvg) {
+            console.log('John\'s team is winning');
+        } else if (teamMikeAvg > teamJohnAvg && teamMikeAvg > teamMaryAvg) {
+            console.log('Mike\'s team is winning');
+        } else if (teamMaryAvg > teamJohnAvg && teamMaryAvg > teamMikeAvg) {
+            console.log('Mary\'s team is winning');
+        } else if (teamJohnAvg === teamMikeAvg && teamJohnAvg > teamMaryAvg) {
+            console.log('John\'s team and Mike\'s team  are tied for winning');
+        } else if (teamJohnAvg === teamMaryAvg && teamJohnAvg > teamMikeAvg) {
+            console.log('John\'s team and Mary\'s team  are tied for winning');
+        } else if (teamMikeAvg === teamMaryAvg && teamMaryAvg > teamJohnAvg) {
+            console.log('Mike\'s team and Mary\'s team  are tied for winning');
+        } else {
+            console.log('They are all tied for winning \n\n');
+        }
+
+        console.log('John\'s Team Score: ' + teamJohnAvg + '\n' +
+            'Mike\'s Team Score: ' + teamMikeAvg + '\n' +
+            'Mary\'s Team Score: ' + teamMaryAvg
+        );
+
+
+        var billsBeforeTip = [124, 48, 268];
+        var tipAmounts = [];
+        var finalAmounts = [];
+
+        function tipCalculator(billAmt) {
+            var percentage;
+            if (billAmt <= 50) {
+                percentage = .2;
+            } else if (50 < billAmt <= 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+            return percentage * billAmt
+        }
+
+        for (i = 0; i < billsBeforeTip.length; i++) {
+            tipAmounts[i] = tipCalculator(billsBeforeTip[i]);
+            finalAmounts[i] = billsBeforeTip[i] + tipAmounts[i];
+            console.log([i] + '. total tip: ' + tipAmounts[i]);
+        }
+
+        console.log('\n\nBills before tips: ' + billsBeforeTip.toString());
+        console.log('Final Amounts: ' + finalAmounts.toString());
+
+
+
+
+        var mark = {
+            name: 'Mark Cage', // key: value
+            mass: '78',
+            height: '1.75',
+            calcBMI: function() {
+                this.bmi = this.mass / Math.pow(this.height, 2);
+            }
+        }
+
+        mark.calcBMI();
+        console.log(mark);
+
+        var john = {
+            name: 'John Smith', // key: value
+            mass: '82',
+            height: '1.65',
+            calcBMI: function() {
+                this.bmi = this.mass / Math.pow(this.height, 2);
+            }
+        }
+
+        john.calcBMI();
+        console.log(john);
+
+        if (mark.bmi > john.bmi) {
+            console.log(mark.name + ' has a higher BMI');
+        } else if (mark.bmi < john.bmi) {
+            console.log(john.name + ' has a higher BMI');
+        } else {
+            console.log(mark.name + ' and ' + john.name + ' has the same BMI');
+        }
+
+
+        var john = {
+            fullName: 'John Smith',
+            bills: [128, 48, 268, 180, 42],
+            calcTips: function() {
+                this.tipAmounts = [];
+                this.finalAmounts = [];
+                for (var i = 0; i < this.bills.length; i++) {
+                    var percentage;
+                    var bill = this.bills[i];
+                    if (bill < 50) {
+                        percentage = .2;
+                    } else if (50 <= bill <= 200) {
+                        percentage = .15;
+                    } else {
+                        percentage = .1;
+                    }
+                    this.tipAmounts[i] = bill * percentage;
+                    this.finalAmounts[i] = bill + (bill * percentage);
+                }
+            }
+        }
+        john.calcTips();
+        console.log(john);
+    </script>
+
+</body>
+
+</html>
